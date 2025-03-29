@@ -21,7 +21,6 @@ presentations/
 
 # Google API credentials
 credentials.json
-config.js
 
 # Logs
 logs/
