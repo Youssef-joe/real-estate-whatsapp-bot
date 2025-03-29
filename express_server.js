@@ -9,8 +9,20 @@ const port = process.env.PORT || 3000;
 // Serve static files from the presentations directory
 app.use(
   "/presentations",
-  express.static(path.join(__dirname, "presentations"))
+  express.static(path.join(__dirname, "presentations"), {
+    setHeaders: (res, path) => {
+      if (path.endsWith(".pdf")) {
+        res.setHeader("Content-Type", "application/pdf");
+      }
+    },
+  })
 );
+
+// Error handling for static files
+app.use((err, req, res, next) => {
+  console.error("Static file error:", err);
+  res.status(500).send("Error serving file");
+});
 
 // Health check endpoint for Render
 app.get("/health", (req, res) => {

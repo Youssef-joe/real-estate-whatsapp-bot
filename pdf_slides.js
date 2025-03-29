@@ -69,8 +69,23 @@ class PDFSlidesManager {
       // Return a promise that resolves when the PDF is written
       return new Promise((resolve, reject) => {
         writeStream.on("finish", () => {
-          // Get the base URL from environment or use localhost for development
-          const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+          // Require BASE_URL to be set in production
+          if (!process.env.BASE_URL && process.env.NODE_ENV === "production") {
+            reject(
+              new Error(
+                "BASE_URL environment variable must be set in production. For Render deployments, this should be your Render service URL (e.g., https://your-service-name.onrender.com). Set it in your Render dashboard under Environment Variables."
+              )
+            );
+            return;
+          }
+
+          // Get the base URL from environment variable (required for cloud deployment)
+          const baseUrl = process.env.BASE_URL;
+          if (!baseUrl) {
+            throw new Error(
+              "BASE_URL environment variable must be set for cloud deployment. For Render, this is your service URL (e.g., https://your-service-name.onrender.com)."
+            );
+          }
           // Create a web URL to the PDF file
           const relativePath = path
             .relative(this.outputDir, outputPath)
