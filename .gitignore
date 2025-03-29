@@ -10,6 +10,7 @@ yarn-error.log
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*
 
 # WhatsApp Web.js authentication data
 .wwebjs_auth/
@@ -20,6 +21,7 @@ presentations/
 
 # Google API credentials
 credentials.json
+config.js
 
 # Logs
 logs/

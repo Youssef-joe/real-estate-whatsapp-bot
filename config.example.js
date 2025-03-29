@@ -6,12 +6,14 @@ module.exports = {
   // Google Slides API credentials
   google: {
     credentials: {
-      client_id: process.env.GOOGLE_CLIENT_ID,
-      client_secret: process.env.GOOGLE_CLIENT_SECRET,
+      client_id: process.env.GOOGLE_CLIENT_ID || "YOUR_CLIENT_ID_HERE",
+      client_secret:
+        process.env.GOOGLE_CLIENT_SECRET || "YOUR_CLIENT_SECRET_HERE",
       redirect_uris: [
         process.env.GOOGLE_REDIRECT_URI || "http://localhost:3000/callback",
       ],
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      refresh_token:
+        process.env.GOOGLE_REFRESH_TOKEN || "YOUR_REFRESH_TOKEN_HERE",
     },
     // The scopes required for Google Slides API
     scopes: [
