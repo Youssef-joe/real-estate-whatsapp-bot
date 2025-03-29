@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: whatsapp-presentation-bot
+    env: docker
+    plan: free
+    region: oregon
+    branch: main
+    healthCheckPath: /health
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REDIRECT_URI
+        value: https://your-app-name.onrender.com/callback
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: GOOGLE_REFRESH_TOKEN
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: PRESENTATION_MODE
+        value: pdf
+      - key: BASE_URL
+        value: https://your-app-name.onrender.com
+    disk:
+      name: data
+      mountPath: /app/.wwebjs_auth
+      sizeGB: 1

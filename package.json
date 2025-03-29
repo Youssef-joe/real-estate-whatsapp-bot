@@ -1,0 +1,26 @@
+{
+  "name": "last-fede-presenter",
+  "version": "1.0.0",
+  "description": "WhatsApp chatbot for creating presentations",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "presentations",
+    "google-slides"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.1",
+    "dotenv": "^16.4.7",
+    "googleapis": "^92.0.0",
+    "pdfkit": "^0.13.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.19.4"
+  }
+}
